@@ -6,11 +6,11 @@ export const siteUrl =
 export const company = {
   name: "Solar Time",
   legalName: "Solar Time S.r.l.",
-  tagline: "LA TUA ENERGIA.\nIL TUO RISPARMIO.\nLA TUA INDIPENDENZA.",
+  tagline: "ENERGIA SUL TETTO.\nSUL CAPANNONE.\nA TERRA.",
   subtitle:
-    "Progettiamo e realizziamo impianti fotovoltaici, sistemi di accumulo e soluzioni intelligenti per la gestione dell'energia.",
+    "Progettiamo e realizziamo impianti fotovoltaici per edilizia civile, coperture industriali e campi a terra in Veneto. Produzione, accumulo e gestione dell'energia.",
   claim:
-    "Progettiamo e realizziamo sistemi completi per produrre, accumulare e gestire la tua energia.",
+    "Fotovoltaico civile, industriale e a terra: sistemi per produrre, accumulare e gestire l'energia.",
   email: "info@solartime.it",
   commercialEmail: "commerciale@solartime.it",
   quotesEmail: "preventivi@solartime.it",
@@ -28,6 +28,8 @@ export const company = {
   vat: "00000000000",
   taxCode: "00000000000",
   area: "Veneto: Padova, Vicenza, Verona, Treviso, Belluno, Venezia, Rovigo",
+  ctaCalc: "Calcolo impianto",
+  ctaCalcHint: "Indicativo, non è il progetto",
 } as const;
 
 export type NavItem = {
@@ -37,16 +39,16 @@ export type NavItem = {
 };
 
 export const mainNav: NavItem[] = [
+  { href: "/fotovoltaico-residenziale", label: "Civile" },
   {
-    href: "/fotovoltaico",
-    label: "Fotovoltaico",
+    href: "/fotovoltaico-industriale",
+    label: "Industriale",
     children: [
-      { href: "/fotovoltaico-residenziale", label: "Residenziale" },
-      { href: "/fotovoltaico-aziende", label: "Aziende" },
-      { href: "/fotovoltaico-industriale", label: "Industriale" },
-      { href: "/fotovoltaico-con-accumulo", label: "Con accumulo" },
+      { href: "/fotovoltaico-aziende", label: "Aziende e PMI" },
+      { href: "/fotovoltaico-industriale", label: "Capannoni e industria" },
     ],
   },
+  { href: "/fotovoltaico-a-terra", label: "A terra" },
   {
     href: "/#soluzioni",
     label: "Soluzioni",
@@ -55,15 +57,12 @@ export const mainNav: NavItem[] = [
       { href: "/inverter", label: "Inverter" },
       { href: "/batterie-accumulo", label: "Batterie" },
       { href: "/wallbox", label: "Wallbox" },
-      { href: "/pompe-di-calore", label: "Pompe di calore" },
       { href: "/monitoraggio-fotovoltaico", label: "Monitoraggio" },
       { href: "/manutenzione-fotovoltaico", label: "Manutenzione" },
+      { href: "/prodotti", label: "Catalogo" },
     ],
   },
-  { href: "/prodotti", label: "Prodotti" },
   { href: "/progetti", label: "Progetti" },
-  { href: "/fotovoltaico-aziende", label: "Aziende" },
-  { href: "/blog", label: "Blog" },
   { href: "/chi-siamo", label: "Chi siamo" },
   { href: "/contatti", label: "Contatti" },
 ];

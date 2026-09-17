@@ -16,7 +16,7 @@ export default function ProdottiPage() {
       </p>
       <div className="mt-10 grid gap-4 md:grid-cols-2">
         {products.map((product) => (
-          <article key={product.code} className="border border-line p-5">
+          <article key={product.code} className="card-3d">
             <p className="text-xs text-amber">
               {product.category} · {product.type}
             </p>

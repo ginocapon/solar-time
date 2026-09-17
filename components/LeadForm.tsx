@@ -27,30 +27,30 @@ export function LeadForm({ source }: { source: string }) {
       <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <label className="grid gap-1 text-sm">
         Nome
-        <input required name="nome" className="border border-line px-3 py-2" />
+        <input required name="nome" className="field" />
       </label>
       <label className="grid gap-1 text-sm">
         Cognome
-        <input required name="cognome" className="border border-line px-3 py-2" />
+        <input required name="cognome" className="field" />
       </label>
       <label className="grid gap-1 text-sm">
         Telefono
-        <input required name="telefono" className="border border-line px-3 py-2" />
+        <input required name="telefono" className="field" />
       </label>
       <label className="grid gap-1 text-sm">
         Email
-        <input required type="email" name="email" className="border border-line px-3 py-2" />
+        <input required type="email" name="email" className="field" />
       </label>
       <label className="grid gap-1 text-sm">
         Comune
-        <input required name="comune" className="border border-line px-3 py-2" />
+        <input required name="comune" className="field" />
       </label>
       <label className="flex items-start gap-2 text-sm">
         <input required type="checkbox" name="gdpr" className="mt-1" />
         Acconsento al trattamento dei dati per essere ricontattato. Informativa DEMO, da verificare
         con un legale prima della pubblicazione.
       </label>
-      <button type="submit" className="rounded-sm bg-navy px-5 py-3 text-sm font-semibold text-white">
+      <button type="submit" className="btn-3d btn-3d-sun">
         Invia richiesta DEMO
       </button>
     </form>

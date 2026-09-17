@@ -8,7 +8,10 @@ export const provinceYield: Record<string, number> = {
   RO: 1260,
 };
 
+export type CalculatorProfile = "civile" | "capannone" | "terra";
+
 export type CalculatorInput = {
+  profile: CalculatorProfile;
   province: string;
   annualKwh: number;
   monthlyBill: number;
@@ -56,14 +59,20 @@ export function estimate(input: CalculatorInput): CalculatorResult {
     shadingFactor[input.shading] *
     (input.tilt >= 20 && input.tilt <= 35 ? 1 : 0.94);
   const roofCap = input.roofM2 > 0 ? (input.roofM2 / 5.5) * 0.44 : 12;
-  const kwp = Math.min(Math.max(demand / yieldKwh, 2.2), roofCap, 20);
+  const maxKwp = input.profile === "terra" ? 2500 : input.profile === "capannone" ? 500 : 24;
+  const minKwp = input.profile === "terra" ? 20 : input.profile === "capannone" ? 12 : 2.2;
+  const kwp = Math.min(Math.max(demand / yieldKwh, minKwp), roofCap, maxKwp);
   const panels = Math.max(6, Math.round((kwp * 1000) / 440));
   const yearlyKwh = kwp * yieldKwh;
-  const baseSelf = input.wantStorage ? 0.68 : 0.38;
+  const baseSelf =
+    input.profile === "terra" ? 0.18 : input.profile === "capannone" ? (input.wantStorage ? 0.55 : 0.62) : input.wantStorage ? 0.68 : 0.38;
   const selfConsumption = Math.min(demand, yearlyKwh * baseSelf);
   const exported = Math.max(0, yearlyKwh - selfConsumption);
   const storageKwh = input.wantStorage
-    ? Math.min(15, Math.max(5, Math.round((demand * 0.35) / 365) * 2 + (input.ev ? 5 : 0)))
+    ? Math.min(
+        input.profile === "civile" ? 15 : input.profile === "capannone" ? 80 : 200,
+        Math.max(5, Math.round((demand * 0.35) / 365) * 2 + (input.ev ? 5 : 0)),
+      )
     : null;
   const gridReduction = Math.min(85, Math.round((selfConsumption / demand) * 100));
 

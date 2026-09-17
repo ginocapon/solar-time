@@ -2,24 +2,55 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { CtaLink } from "./CtaLink";
-import { estimate, type CalculatorInput } from "@/lib/calculator";
+import { estimate, type CalculatorInput, type CalculatorProfile } from "@/lib/calculator";
 
-const initial: CalculatorInput = {
-  province: "PD",
-  annualKwh: 4200,
-  monthlyBill: 140,
-  roofM2: 40,
-  orientation: "sud",
-  tilt: 30,
-  shading: "nessuno",
-  heatPump: false,
-  ev: false,
-  pool: false,
-  wantStorage: true,
+const presets: Record<CalculatorProfile, CalculatorInput> = {
+  civile: {
+    profile: "civile",
+    province: "PD",
+    annualKwh: 4200,
+    monthlyBill: 140,
+    roofM2: 40,
+    orientation: "sud",
+    tilt: 30,
+    shading: "nessuno",
+    heatPump: false,
+    ev: false,
+    pool: false,
+    wantStorage: true,
+  },
+  capannone: {
+    profile: "capannone",
+    province: "PD",
+    annualKwh: 85000,
+    monthlyBill: 2800,
+    roofM2: 1200,
+    orientation: "sud",
+    tilt: 10,
+    shading: "nessuno",
+    heatPump: false,
+    ev: false,
+    pool: false,
+    wantStorage: false,
+  },
+  terra: {
+    profile: "terra",
+    province: "RO",
+    annualKwh: 250000,
+    monthlyBill: 0,
+    roofM2: 8000,
+    orientation: "sud",
+    tilt: 25,
+    shading: "nessuno",
+    heatPump: false,
+    ev: false,
+    pool: false,
+    wantStorage: false,
+  },
 };
 
 export function Calculator() {
-  const [input, setInput] = useState(initial);
+  const [input, setInput] = useState<CalculatorInput>(presets.civile);
   const [submitted, setSubmitted] = useState(false);
   const result = useMemo(() => estimate(input), [input]);
 
@@ -28,22 +59,52 @@ export function Calculator() {
     setSubmitted(true);
   }
 
+  const surfaceLabel =
+    input.profile === "terra"
+      ? "Superficie disponibile (m²)"
+      : input.profile === "capannone"
+        ? "Superficie copertura (m²)"
+        : "Superficie tetto (m²)";
+
   return (
     <section id="calcolatore" className="mx-auto max-w-6xl px-4 py-16">
-      <p className="text-xs font-semibold tracking-[0.16em] text-amber">STIMA PRELIMINARE</p>
-      <h2 className="mt-2 max-w-2xl text-3xl font-semibold text-navy">
-        Quanta potenza serve, in ordine di grandezza
+      <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-amber">
+        Calcolo impianto · indicativo
+      </p>
+      <h2 className="font-display mt-2 max-w-2xl text-4xl text-navy">
+        Un ordine di grandezza, non il progetto
       </h2>
       <p className="mt-3 max-w-2xl text-muted">
-        Non è un progetto tecnico. Il risultato usa fattori provinciali DEMO e i dati che inserisci. Per
-        una simulazione personalizzata serve sopralluogo.
+        Ombre, struttura, rete, consumi reali: le variabili sono troppe per un numero chiuso dal sito.
+        Qui ottieni una fascia. Il valore è orientarti e poi parlare con un tecnico.
       </p>
+      <div className="seg-3d mt-6 flex flex-wrap">
+        {(
+          [
+            ["civile", "Civile"],
+            ["capannone", "Capannone"],
+            ["terra", "A terra"],
+          ] as const
+        ).map(([id, label]) => (
+          <button
+            key={id}
+            type="button"
+            className={input.profile === id ? "is-on" : ""}
+            onClick={() => {
+              setInput(presets[id]);
+              setSubmitted(false);
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
       <form onSubmit={onSubmit} className="mt-8 grid gap-8 lg:grid-cols-2">
         <div className="grid gap-4">
           <label className="grid gap-1 text-sm">
             Provincia
             <select
-              className="border border-line px-3 py-2"
+              className="field"
               value={input.province}
               onChange={(e) => setInput({ ...input, province: e.target.value })}
             >
@@ -57,31 +118,33 @@ export function Calculator() {
             </select>
           </label>
           <label className="grid gap-1 text-sm">
-            Consumo annuale (kWh)
+            {input.profile === "terra" ? "Energia obiettivo (kWh/anno)" : "Consumo annuale (kWh)"}
             <input
               type="number"
               min={0}
-              className="border border-line px-3 py-2"
+              className="field"
               value={input.annualKwh}
               onChange={(e) => setInput({ ...input, annualKwh: Number(e.target.value) })}
             />
           </label>
+          {input.profile !== "terra" ? (
+            <label className="grid gap-1 text-sm">
+              Spesa media mensile (€)
+              <input
+                type="number"
+                min={0}
+                className="field"
+                value={input.monthlyBill}
+                onChange={(e) => setInput({ ...input, monthlyBill: Number(e.target.value) })}
+              />
+            </label>
+          ) : null}
           <label className="grid gap-1 text-sm">
-            Spesa media mensile (€)
+            {surfaceLabel}
             <input
               type="number"
               min={0}
-              className="border border-line px-3 py-2"
-              value={input.monthlyBill}
-              onChange={(e) => setInput({ ...input, monthlyBill: Number(e.target.value) })}
-            />
-          </label>
-          <label className="grid gap-1 text-sm">
-            Superficie tetto (m²)
-            <input
-              type="number"
-              min={0}
-              className="border border-line px-3 py-2"
+              className="field"
               value={input.roofM2}
               onChange={(e) => setInput({ ...input, roofM2: Number(e.target.value) })}
             />
@@ -89,7 +152,7 @@ export function Calculator() {
           <label className="grid gap-1 text-sm">
             Orientamento
             <select
-              className="border border-line px-3 py-2"
+              className="field"
               value={input.orientation}
               onChange={(e) =>
                 setInput({ ...input, orientation: e.target.value as CalculatorInput["orientation"] })
@@ -108,7 +171,7 @@ export function Calculator() {
               type="number"
               min={0}
               max={60}
-              className="border border-line px-3 py-2"
+              className="field"
               value={input.tilt}
               onChange={(e) => setInput({ ...input, tilt: Number(e.target.value) })}
             />
@@ -116,7 +179,7 @@ export function Calculator() {
           <label className="grid gap-1 text-sm">
             Ombreggiamenti
             <select
-              className="border border-line px-3 py-2"
+              className="field"
               value={input.shading}
               onChange={(e) =>
                 setInput({ ...input, shading: e.target.value as CalculatorInput["shading"] })
@@ -128,30 +191,53 @@ export function Calculator() {
             </select>
           </label>
           <div className="flex flex-wrap gap-4 text-sm">
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={input.heatPump}
-                onChange={(e) => setInput({ ...input, heatPump: e.target.checked })}
-              />
-              Pompa di calore
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={input.ev}
-                onChange={(e) => setInput({ ...input, ev: e.target.checked })}
-              />
-              Auto elettrica
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={input.pool}
-                onChange={(e) => setInput({ ...input, pool: e.target.checked })}
-              />
-              Piscina
-            </label>
+            {input.profile === "civile" ? (
+              <>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={input.heatPump}
+                    onChange={(e) => setInput({ ...input, heatPump: e.target.checked })}
+                  />
+                  Pompa di calore
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={input.ev}
+                    onChange={(e) => setInput({ ...input, ev: e.target.checked })}
+                  />
+                  Auto elettrica
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={input.pool}
+                    onChange={(e) => setInput({ ...input, pool: e.target.checked })}
+                  />
+                  Piscina
+                </label>
+              </>
+            ) : (
+              <>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={input.ev}
+                    onChange={(e) => setInput({ ...input, ev: e.target.checked })}
+                  />
+                  Flotta / ricarica
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={input.pool}
+                    onChange={(e) => setInput({ ...input, pool: e.target.checked })}
+                  />
+                  Carichi oltre il diurno
+                </label>
+              </>
+            )}
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -161,12 +247,12 @@ export function Calculator() {
               Valuta accumulo
             </label>
           </div>
-          <button type="submit" className="rounded-sm bg-navy px-5 py-3 text-sm font-semibold text-white">
+          <button type="submit" className="btn-3d btn-3d-sun">
             Aggiorna la stima
           </button>
         </div>
-        <div className="border border-line bg-paper p-6">
-          <p className="text-xs font-semibold tracking-[0.14em] text-navy">RISULTATO — STIMA PRELIMINARE</p>
+        <div className="card-3d bg-sand">
+          <p className="text-xs font-semibold tracking-[0.14em] text-navy">RISULTATO — INDICATIVO</p>
           <dl className="mt-4 grid grid-cols-2 gap-4 text-sm">
             <div>
               <dt className="text-muted">Potenza indicativa</dt>
@@ -181,7 +267,9 @@ export function Calculator() {
               <dd className="text-xl font-semibold">{result.yearlyKwh} kWh</dd>
             </div>
             <div>
-              <dt className="text-muted">Autoconsumo stimato</dt>
+              <dt className="text-muted">
+                {input.profile === "terra" ? "Quota usata in sito (stima)" : "Autoconsumo stimato"}
+              </dt>
               <dd className="text-xl font-semibold">{result.selfConsumption} kWh</dd>
             </div>
             <div>
@@ -200,17 +288,17 @@ export function Calculator() {
             </div>
           </dl>
           <p className="mt-4 text-xs text-muted">
-            I numeri non sono un progetto definitivo né un preventivo. Nessun lead viene salvato: non c&apos;è
-            ancora un CRM.
+            Non è un preventivo né un dimensionamento. Serve a farti un&apos;idea e a prepararci la
+            chiacchierata. Il numero sul tuo tetto, capannone o campo esce dal sopralluogo.
           </p>
           {submitted ? (
             <div className="mt-6 border border-navy bg-white p-4 text-sm">
-              Stima aggiornata in locale. Vuoi una simulazione personalizzata? Il form contatti è in
-              modalità DEMO e non invia email.
+              Calcolo aggiornato in locale. Per chiudere le variabili: contatti. In DEMO il form non invia
+              email.
             </div>
           ) : null}
           <div className="mt-6">
-            <CtaLink href="/contatti">Richiedi simulazione</CtaLink>
+            <CtaLink href="/contatti">Parla con un tecnico</CtaLink>
           </div>
         </div>
       </form>

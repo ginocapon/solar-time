@@ -19,7 +19,7 @@ export function JsonLd() {
           addressCountry: "IT",
         },
         description: isDemo
-          ? "Azienda DEMO per lo sviluppo della piattaforma Solar Time. Dati fittizi."
+          ? "Azienda DEMO: fotovoltaico civile, industriale e a terra in Veneto. Dati fittizi."
           : company.claim,
       },
       {

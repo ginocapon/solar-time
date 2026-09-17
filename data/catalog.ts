@@ -157,6 +157,20 @@ export const projects: Project[] = [
       "Progetto DEMO su tetto piano industriale. Serve sempre un sopralluogo per vincoli strutturali, ombre e connessione.",
   },
   {
+    slug: "terra-rovigo-demo",
+    title: "Campo fotovoltaico a terra in Polesine",
+    city: "Rovigo",
+    province: "RO",
+    type: "A terra",
+    kwp: "500 kWp",
+    panels: 1140,
+    inverter: "VoltNest centrali (DEMO)",
+    production: "stima preliminare su irraggiamento di pianura",
+    goal: "Produzione a terra e verifica di connessione.",
+    description:
+      "Progetto DEMO su campo in pianura: file di tavole, viabilità e cabina. Non è un tetto residenziale ridimensionato. I valori sono illustrativi.",
+  },
+  {
     slug: "accumulo-treviso-demo",
     title: "Fotovoltaico con accumulo a Treviso",
     city: "Treviso",
@@ -180,7 +194,12 @@ export const faqs: Faq[] = [
   {
     topic: "calcolatore",
     q: "Il calcolatore online sostituisce il progetto?",
-    a: "No. Il risultato è una stima preliminare. Il dimensionamento definitivo richiede sopralluogo, bollette, vincoli del tetto e verifica di connessione.",
+    a: "No. Il risultato è una stima preliminare. Il dimensionamento definitivo richiede sopralluogo, bollette o curva dei prelievi, vincoli di tetto/campo e verifica di connessione.",
+  },
+  {
+    topic: "servizio",
+    q: "Lavorate solo sul residenziale?",
+    a: "No. Solar Time progetta impianti residenziali, coperture di capannoni e campi a terra. Ciascun ambito ha vincoli di struttura, connessione e profilo dei prelievi propri.",
   },
   {
     topic: "calcolatore",
@@ -225,7 +244,7 @@ export const demoReviews = [
   {
     name: "Officina Nord (DEMO)",
     place: "Verona",
-    text: "Recensione DEMO aziendale: valutata la copertura dei consumi diurni. Non utilizzare questo testo come prova sociale reale.",
+    text: "Recensione DEMO su capannone: valutata la copertura dei consumi diurni e la portata del tetto. Non utilizzare questo testo come prova sociale reale.",
     date: "2026-08-21",
   },
 ];

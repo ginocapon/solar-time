@@ -14,7 +14,7 @@ export default function ProgettiPage() {
       <p className="mt-3 text-muted">Esempi DEMO per SEO locale e collaudo schede. Non sono commesse reali.</p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {projects.map((project) => (
-          <Link key={project.slug} href={`/progetti/${project.slug}`} className="border border-line p-5 hover:bg-paper">
+          <Link key={project.slug} href={`/progetti/${project.slug}`} className="card-3d block">
             <h2 className="text-xl font-semibold text-navy">{project.title}</h2>
             <p className="mt-2 text-sm text-muted">
               {project.kwp} · {project.city} ({project.province})

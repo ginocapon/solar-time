@@ -16,13 +16,13 @@ export const servicePages: PageContent[] = [
     metaTitle: "Fotovoltaico Veneto",
     metaDescription:
       "Impianti fotovoltaici in Veneto: produzione, accumulo e gestione energia. Stima preliminare e sopralluogo Solar Time DEMO.",
-    h1: "Fotovoltaico per produrre e gestire la tua energia",
+    h1: "Fotovoltaico civile, industriale e a terra",
     summary:
-      "Solar Time progetta impianti fotovoltaici residenziali, aziendali e industriali in Veneto. Non vendiamo un kit: partiamo da consumi, tetto e obiettivo di indipendenza.",
+      "Solar Time progetta impianti su tetti civili, coperture di capannoni e campi a terra in Veneto. Il dimensionamento parte da consumi, struttura e connessione.",
     sections: [
       {
         h2: "Cosa valuta un impianto fatto bene?",
-        body: "Consumo annuo e curva oraria, superficie e orientamento, ombre, eventuale pompa di calore o auto elettrica, e se serve accumulo. Senza questi dati la potenza in kWp è solo un numero.",
+        body: "Consumo o energia da produrre, curva oraria, superficie (falda, copertura o campo), ombre, connessione. Senza questi dati la potenza in kWp è solo un numero — in civile come in industria.",
       },
       {
         h2: "Quanto produce un impianto da 6 kWp?",
@@ -33,7 +33,7 @@ export const servicePages: PageContent[] = [
         body: "Completi la stima o il form. In modalità DEMO la richiesta non genera email reale: serve a collaudare il funnel. A dati reali, il sopralluogo verifica struttura, inverter e connessione.",
       },
     ],
-    cta: { label: "Calcola il tuo impianto", href: "/calcola" },
+    cta: { label: "Calcolo impianto", href: "/calcola" },
   },
   {
     slug: "fotovoltaico-residenziale",
@@ -85,14 +85,47 @@ export const servicePages: PageContent[] = [
       "Impianti fotovoltaici industriali in Veneto: tetti piani, connessione e monitoraggio. Solar Time DEMO.",
     h1: "Fotovoltaico industriale: tetto, rete e produzione",
     summary:
-      "Su scala industriale pesano struttura, connessione alla rete, ombreggiamenti da impianti tecnici e il profilo dei turni. Non si parte dal modulo.",
+      "Su scala industriale pesano struttura della copertura, connessione alla rete, ombreggiamenti da impianti tecnici e il profilo dei turni. Non si parte dal modulo e non si copia un layout residenziale.",
     sections: [
       {
         h2: "Quali vincoli tecnici arrivano prima dei pannelli?",
         body: "Portata della copertura, linee esistenti, cabina, iter di connessione e accessi per la manutenzione. Un layout bello sul render può essere sbagliato sul tetto vero.",
       },
+      {
+        h2: "Cosa significa coprire un capannone?",
+        body: "Su tetto piano si ragiona in kWp installabili, lucernari, linee vita, smaltimento acque e distanze. La copertura non è un campo a terra messo in quota: servono staffe, zavorre o fissaggi compatibili con la struttura.",
+      },
+      {
+        h2: "Quando l'autoconsumo industriale batte l'immissione?",
+        body: "Se i turni coincidono con il sole, l'energia resta in sito. Se la produzione è su un turno e la copertura è ampia, una quota può andare in rete: va indicata in progetto.",
+      },
     ],
     cta: { label: "Parla con un tecnico", href: "/contatti" },
+  },
+  {
+    slug: "fotovoltaico-a-terra",
+    title: "Fotovoltaico a terra",
+    metaTitle: "Fotovoltaico a terra Veneto",
+    metaDescription:
+      "Impianti fotovoltaici a terra in Veneto: campi, tavole, viabilità e connessione. Solar Time DEMO.",
+    h1: "Fotovoltaico a terra: campo, rete e geometria",
+    summary:
+      "Un impianto a terra non è un tetto sdraiato. Contano suolo, vincoli, viabilità tra le file, inclinazione delle tavole e la potenza che la rete può accettare.",
+    sections: [
+      {
+        h2: "Quando ha senso un campo invece del tetto?",
+        body: "Quando la copertura non c'è, non regge, è piena di impianti o i consumi stanno altrove. In pianura veneta (Rovigo, Padova, trevigiano agricolo) la superficie c'è: il nodo è connessione, uso del suolo e distanze.",
+      },
+      {
+        h2: "Cosa si valuta prima dei moduli?",
+        body: "Destinazione urbanistica, ombre, allagabilità, accessi mezzi, cabina e iter di connessione. Senza questi punti un layout da catalogo è solo una foto.",
+      },
+      {
+        h2: "È la stessa cosa dell'agrivoltaico?",
+        body: "No. Agrivoltaico e campo a terra condividono il suolo, non le regole. Altezza, interfila e coltura cambiano struttura e producibilità. Si decide sul caso, non sullo slogan.",
+      },
+    ],
+    cta: { label: "Richiedi una verifica", href: "/contatti" },
   },
   {
     slug: "fotovoltaico-con-accumulo",
@@ -109,7 +142,7 @@ export const servicePages: PageContent[] = [
         body: "Si parte dai kWh prelevati quando l'impianto è fermo. Poi si verifica inverter ibrido, profondità di scarica e obiettivo (bolletta, backup, ricarica). Il calcolatore indica una fascia, non un modello.",
       },
     ],
-    cta: { label: "Calcola il tuo impianto", href: "/calcola" },
+    cta: { label: "Calcolo impianto", href: "/calcola" },
   },
   {
     slug: "batterie-accumulo",
@@ -151,9 +184,9 @@ export const servicePages: PageContent[] = [
     metaTitle: "Pannelli fotovoltaici",
     metaDescription:
       "Pannelli fotovoltaici per tetti residenziali e aziendali in Veneto. Specifiche DEMO Solar Time, niente listini pubblici.",
-    h1: "Pannelli fotovoltaici: potenza sul tetto che hai",
+    h1: "Pannelli fotovoltaici: potenza sul sito che hai",
     summary:
-      "Il modulo si sceglie su spazio, ombre e obiettivo kWp. Un 440 W su falda piccola può battere un 575 W che non ci sta in layout pulito.",
+      "Il modulo si sceglie su spazio, ombre e obiettivo kWp: falda civile, copertura di capannone o tavole a terra. Un 440 W su falda piccola può battere un 575 W che non ci sta in layout pulito.",
     sections: [
       {
         h2: "Quanti pannelli per 6 kWp?",
@@ -270,17 +303,17 @@ export const servicePages: PageContent[] = [
     metaTitle: "Chi è Solar Time | Azienda DEMO Padova",
     metaDescription:
       "Solar Time è un'azienda DEMO di Padova: progettazione, installazione e assistenza fotovoltaico. Dati fittizi, sostituibili da admin.",
-    h1: "Progettazione, posa e assistenza nel tempo",
+    h1: "Civile, industria e campi: un solo progetto energetico",
     summary:
-      "Solar Time S.r.l. è un soggetto DEMO con sede a Padova. Serve a costruire la piattaforma: identità, testi e recensioni reali arriveranno dai dati veri, non da claim inventati.",
+      "Solar Time S.r.l. è un soggetto DEMO con sede a Padova. Progetta tetti civili, coperture di capannoni e impianti a terra. Identità e recensioni reali arriveranno dai dati veri, non da claim inventati.",
     sections: [
       {
         h2: "Chi è Solar Time?",
-        body: "Azienda DEMO per vendita, progettazione e gestione di impianti fotovoltaici. Email, telefono e P.IVA attuali sono fittizi e pensati per essere sostituiti senza riscrivere il sito.",
+        body: "Azienda DEMO per vendita, progettazione e gestione di impianti fotovoltaici su edilizia civile, industria e suolo. Email, telefono e P.IVA attuali sono fittizi e pensati per essere sostituiti senza riscrivere il sito.",
       },
       {
         h2: "Cosa fa, in pratica?",
-        body: "Analisi dei consumi, sopralluogo, simulazione, fornitura componenti, installazione, pratiche, monitoraggio e manutenzione. Il CRM e i preventivi arriveranno quando ci saranno dati da gestire: oggi il sito vive su GitHub.",
+        body: "Analisi dei consumi o dell'energia da immettere, sopralluogo su tetto o campo, simulazione, fornitura, installazione, pratiche, monitoraggio e manutenzione. Il CRM arriverà quando ci saranno dati da gestire: oggi il sito vive su GitHub.",
       },
     ],
     cta: { label: "Parla con un tecnico", href: "/contatti" },

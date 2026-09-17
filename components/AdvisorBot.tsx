@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { botQuestions } from "@/data/bot-questions";
 import { company } from "@/data/company";
+import { publicSrc } from "@/lib/asset";
 
 type Line = { from: "bot" | "you"; text: string };
 
@@ -57,10 +58,11 @@ export function AdvisorBot() {
         aria-label={open ? "Chiudi chat con l'installatore" : "Apri chat con l'installatore"}
       >
         <Image
-          src="/images/bot-installatore.png"
-          alt=""
-          width={128}
-          height={128}
+          src={publicSrc("/images/bot-installatore.png")}
+          alt="Luca, installatore Solar Time"
+          width={168}
+          height={168}
+          priority
           className="bot-fab-photo"
         />
         {open ? <span className="bot-fab-x">×</span> : null}
@@ -69,12 +71,12 @@ export function AdvisorBot() {
         <section className="bot-panel" aria-label="Installatore Solar Time">
           <header className="flex items-center gap-3 bg-navy px-4 py-3 text-cream">
             <Image
-              src="/images/bot-installatore.png"
+              src={publicSrc("/images/bot-installatore.png")}
               alt="Luca, installatore Solar Time"
               width={48}
               height={48}
               className="h-12 w-12 rounded-full object-cover ring-2 ring-amber"
-              style={{ objectPosition: "50% 32%" }}
+              style={{ objectPosition: "50% 18%" }}
             />
             <div className="min-w-0 flex-1">
               <p className="font-display text-lg leading-tight">Luca · installatore</p>
@@ -94,12 +96,12 @@ export function AdvisorBot() {
               >
                 {line.from === "bot" ? (
                   <Image
-                    src="/images/bot-installatore.png"
+                    src={publicSrc("/images/bot-installatore.png")}
                     alt=""
                     width={28}
                     height={28}
                     className="mb-0.5 h-7 w-7 shrink-0 rounded-full object-cover"
-                    style={{ objectPosition: "50% 32%" }}
+                    style={{ objectPosition: "50% 18%" }}
                   />
                 ) : null}
                 <p

@@ -10,11 +10,11 @@ export function ContentPage({ page }: { page: PageContent }) {
       <div className="mt-6">
         <CtaLink href={page.cta.href}>{page.cta.label}</CtaLink>
       </div>
-      <div className="mt-10 grid gap-8">
+      <div className="mt-10 grid gap-4">
         {page.sections.map((section) => (
-          <section key={section.h2}>
+          <section key={section.h2} className="card-3d">
             <h2 className="font-display text-2xl text-navy">{section.h2}</h2>
-            <p className="mt-3 text-ink">{section.body}</p>
+            <p className="mt-3 text-sm leading-relaxed text-ink">{section.body}</p>
           </section>
         ))}
       </div>

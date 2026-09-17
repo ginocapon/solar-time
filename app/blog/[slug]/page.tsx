@@ -24,13 +24,13 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-14">
       <p className="text-xs text-muted">{post.date} · DEMO</p>
-      <h1 className="mt-3 text-4xl font-semibold text-navy">{post.title}</h1>
+      <h1 className="font-display mt-3 text-4xl text-navy">{post.title}</h1>
       <p className="mt-4 text-lg text-muted">{post.summary}</p>
-      <div className="mt-8 grid gap-8">
+      <div className="mt-8 grid gap-4">
         {post.h2.map((block) => (
-          <section key={block.q}>
-            <h2 className="text-2xl font-semibold text-navy">{block.q}</h2>
-            <p className="mt-3">{block.a}</p>
+          <section key={block.q} className="card-3d">
+            <h2 className="font-display text-2xl text-navy">{block.q}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-ink">{block.a}</p>
           </section>
         ))}
       </div>

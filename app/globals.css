@@ -296,9 +296,14 @@ textarea:focus-visible {
 
 .hero-visual {
   perspective: 1100px;
+  min-width: 0;
 }
 
 .hero-frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 280px;
+  background: #10283f;
   transform: rotateY(-6deg) rotateX(3deg) translateZ(0);
   border-radius: 18px;
   overflow: hidden;
@@ -318,15 +323,29 @@ textarea:focus-visible {
   -webkit-transform: translateZ(0);
 }
 
+.hero-frame .slo-mo {
+  position: absolute;
+  inset: 0;
+}
+
 .slo-mo-media {
   display: block;
-  width: 118% !important;
+  width: 100% !important;
   max-width: none !important;
-  height: auto;
-  margin-left: -9%;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: 42% 46%;
   transform-origin: 42% 38%;
   -webkit-animation: slo-mo-iphone 22s var(--slo) infinite alternate;
   animation: slo-mo-iphone 22s var(--slo) infinite alternate;
+}
+
+.deck {
+  align-items: stretch;
+}
+
+.deck > * {
+  min-width: 0;
 }
 
 .deck > .card-3d {
@@ -355,14 +374,18 @@ textarea:focus-visible {
 }
 
 .photo-card .slo-mo {
-  height: 180px;
+  position: relative;
+  height: 210px;
+  background: #14304a;
 }
 
 .photo-card .slo-mo-media {
-  width: 118% !important;
-  height: 118% !important;
-  margin-left: -9%;
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
   object-fit: cover;
+  object-position: 50% 50%;
   -webkit-animation: slo-mo-card 18s var(--slo) infinite alternate;
   animation: slo-mo-card 18s var(--slo) infinite alternate;
 }
@@ -419,9 +442,17 @@ textarea:focus-visible {
   border: 1px solid rgba(11, 31, 51, 0.08);
   border-radius: var(--radius);
   padding: 24px;
+  min-width: 0;
   box-shadow: 0 8px 24px rgba(11, 31, 51, 0.06);
   transform: translateZ(0);
   transition: transform 0.3s var(--bounce), box-shadow 0.3s ease;
+}
+
+.card-3d h3,
+.card-3d p,
+.card-3d footer {
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
 }
 
 .card-3d:hover {
@@ -461,14 +492,14 @@ textarea:focus-visible {
   position: fixed;
   right: 18px;
   bottom: 86px;
-  z-index: 50;
-  width: 68px;
-  height: 68px;
+  z-index: 80;
+  width: 84px;
+  height: 84px;
   padding: 0;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid #fff8ec;
-  background: var(--navy);
+  background: #d7e3ef;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.55) inset,
     0 5px 0 var(--ember-edge),
@@ -479,7 +510,7 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 32%;
+  object-position: 50% 18%;
 }
 
 .bot-fab-x {
@@ -499,8 +530,8 @@ textarea:focus-visible {
 .bot-panel {
   position: fixed;
   right: 16px;
-  bottom: 160px;
-  z-index: 50;
+  bottom: 176px;
+  z-index: 80;
   width: min(400px, calc(100vw - 24px));
   max-height: min(70vh, 620px);
   display: flex;

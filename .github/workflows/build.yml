@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: "true"
+          NEXT_PUBLIC_BASE_PATH: /solar-time
           NEXT_PUBLIC_SITE_URL: https://ginocapon.github.io/solar-time
       - run: touch out/.nojekyll
       - if: github.event_name == 'push' && github.ref == 'refs/heads/main'

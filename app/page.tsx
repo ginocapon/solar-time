@@ -7,6 +7,7 @@ import { Reveal } from "@/components/Reveal";
 import { demoReviews, faqs, products, projects } from "@/data/catalog";
 import { company } from "@/data/company";
 import { posts } from "@/data/blog";
+import { publicSrc } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: {
@@ -21,21 +22,21 @@ const lines = [
     href: "/fotovoltaico-residenziale",
     title: "Civile",
     text: "Abitazioni e condomini: produzione, autoconsumo ed eventuale accumulo.",
-    image: "/images/line-civile.png",
+    image: publicSrc("/images/line-civile.png"),
     alt: "Tetto residenziale in Veneto con pannelli fotovoltaici",
   },
   {
     href: "/fotovoltaico-industriale",
     title: "Capannoni e industria",
     text: "Coperture piane, struttura, connessione e consumi diurni di produzione.",
-    image: "/images/line-capannoni.png",
+    image: publicSrc("/images/line-capannoni.png"),
     alt: "Capannone industriale con copertura fotovoltaica",
   },
   {
     href: "/fotovoltaico-a-terra",
     title: "Fotovoltaico a terra",
     text: "Campi, tavole, viabilità e iter di connessione. Superficie e rete prima dei moduli.",
-    image: "/images/line-fotovoltaico-a-terra.png",
+    image: publicSrc("/images/line-fotovoltaico-a-terra.png"),
     alt: "Impianto fotovoltaico a terra con file di moduli in pianura",
   },
 ];
@@ -87,12 +88,12 @@ export default function HomePage() {
             <div className="hero-frame">
               <div className="slo-mo">
                 <Image
-                  src="/images/hero-fotovoltaico-civile-industriale-terra.png"
+                  src={publicSrc("/images/hero-fotovoltaico-civile-industriale-terra.png")}
                   alt="Paesaggio veneto con fotovoltaico civile sul tetto, copertura di un capannone e impianto a terra in campo"
-                  width={1600}
-                  height={900}
+                  fill
                   priority
-                  className="slo-mo-media h-auto w-full"
+                  sizes="(max-width: 1024px) 100vw, 560px"
+                  className="slo-mo-media"
                 />
               </div>
             </div>
@@ -121,14 +122,14 @@ export default function HomePage() {
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    width={1200}
-                    height={900}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="slo-mo-media"
                   />
                 </div>
                 <div className="pad">
-                  <h3 className="font-display text-2xl text-navy">{item.title}</h3>
-                  <p className="mt-2 text-sm text-muted">{item.text}</p>
+                  <h3 className="font-display text-xl leading-snug text-navy">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
                 </div>
               </Link>
             ))}
@@ -152,8 +153,8 @@ export default function HomePage() {
               ["Area Veneto", "Sette province, con pagine locali su tetti, capannoni e campi del territorio."],
             ].map(([title, text]) => (
               <div key={title} className="card-3d">
-                <h3 className="font-display text-2xl text-navy">{title}</h3>
-                <p className="mt-2 text-sm text-muted">{text}</p>
+                <h3 className="font-display text-xl leading-snug text-navy">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
               </div>
             ))}
           </div>
@@ -166,8 +167,8 @@ export default function HomePage() {
           <div className="deck mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((item) => (
               <Link key={item.href} href={item.href} className="card-3d block">
-                <h3 className="font-display text-2xl text-navy">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted">{item.text}</p>
+                <h3 className="font-display text-xl leading-snug text-navy">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
               </Link>
             ))}
           </div>
@@ -207,8 +208,8 @@ export default function HomePage() {
             {projects.map((project) => (
               <Link key={project.slug} href={`/progetti/${project.slug}`} className="card-3d block">
                 <p className="text-xs font-extrabold uppercase tracking-wider text-amber">{project.type}</p>
-                <h3 className="font-display mt-2 text-2xl text-navy">{project.title}</h3>
-                <p className="mt-2 text-sm text-muted">
+                <h3 className="font-display mt-2 text-xl leading-snug text-navy">{project.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">
                   {project.kwp} · {project.city}
                 </p>
               </Link>
@@ -258,8 +259,8 @@ export default function HomePage() {
           <div className="deck mt-8 grid gap-6">
             {faqs.map((faq) => (
               <div key={faq.q} className="card-3d">
-                <h3 className="font-display text-2xl text-navy">{faq.q}</h3>
-                <p className="mt-2 text-sm text-muted">{faq.a}</p>
+                <h3 className="font-display text-xl leading-snug text-navy">{faq.q}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{faq.a}</p>
               </div>
             ))}
           </div>
@@ -268,14 +269,15 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="font-display text-4xl text-navy">Guide</h2>
-        <div className="deck mt-8 grid gap-4 md:grid-cols-3">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="card-3d block">
-              <h3 className="font-display text-2xl text-navy">{post.title}</h3>
-              <p className="mt-2 text-sm text-muted">{post.summary}</p>
-            </Link>
-          ))}
-        </div>
+          <div className="deck mt-8 grid gap-4 md:grid-cols-3">
+            {posts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="card-3d block">
+                <p className="text-xs font-extrabold uppercase tracking-wider text-amber">{post.date}</p>
+                <h3 className="font-display mt-2 text-xl leading-snug text-navy">{post.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{post.summary}</p>
+              </Link>
+            ))}
+          </div>
       </section>
 
       <section className="bg-navy px-4 py-16 text-center text-cream">

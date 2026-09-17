@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { publicSrc } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "Campagna visiva Missione indipendenza",
@@ -16,7 +17,7 @@ export default function CampagnaPage() {
         pesare sul Largest Contentful Paint.
       </p>
       <Image
-        src="/images/solar-time-hero-luna-bionda.png"
+        src={publicSrc("/images/solar-time-hero-luna-bionda.png")}
         alt="Visual campagna Solar Time: impianto fotovoltaico e accumulo su scenario lunare, bandiera con il claim di indipendenza energetica"
         width={1600}
         height={900}

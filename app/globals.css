@@ -16,6 +16,7 @@
   --cream: #f7f5f0;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --slo: cubic-bezier(0.42, 0, 0.58, 1);
   --nav-h: 74px;
   --radius: 12px;
 }
@@ -251,7 +252,7 @@ textarea:focus-visible {
   z-index: 60;
   background: var(--cream);
   transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: transform 0.55s cubic-bezier(0.32, 0.72, 0, 1);
   overflow-y: auto;
   padding: 28px 24px 120px;
   pointer-events: none;
@@ -304,11 +305,106 @@ textarea:focus-visible {
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.38),
     0 2px 0 rgba(255, 255, 255, 0.22) inset;
-  transition: transform 0.5s var(--ease);
+  transition: transform 0.85s var(--ease);
 }
 
 .hero-frame:hover {
   transform: rotateY(-2deg) rotateX(1deg) translateY(-6px);
+}
+
+.slo-mo {
+  overflow: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.slo-mo-media {
+  display: block;
+  width: 118% !important;
+  max-width: none !important;
+  height: auto;
+  margin-left: -9%;
+  transform-origin: 42% 38%;
+  -webkit-animation: slo-mo-iphone 22s var(--slo) infinite alternate;
+  animation: slo-mo-iphone 22s var(--slo) infinite alternate;
+}
+
+.deck > .card-3d {
+  -webkit-animation: slo-mo-deck 16s var(--slo) infinite alternate;
+  animation: slo-mo-deck 16s var(--slo) infinite alternate;
+}
+
+.deck > .card-3d:nth-child(2n) {
+  animation-delay: -5.5s;
+  -webkit-animation-delay: -5.5s;
+}
+
+.deck > .card-3d:nth-child(3n) {
+  animation-delay: -11s;
+  -webkit-animation-delay: -11s;
+}
+
+.deck > .card-3d:nth-child(4n) {
+  animation-delay: -8s;
+  -webkit-animation-delay: -8s;
+}
+
+.deck > .card-3d:hover {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+}
+
+.photo-card .slo-mo {
+  height: 180px;
+}
+
+.photo-card .slo-mo-media {
+  width: 118% !important;
+  height: 118% !important;
+  margin-left: -9%;
+  object-fit: cover;
+  -webkit-animation: slo-mo-card 18s var(--slo) infinite alternate;
+  animation: slo-mo-card 18s var(--slo) infinite alternate;
+}
+
+.photo-card:nth-child(2) .slo-mo-media {
+  animation-delay: -6s;
+  -webkit-animation-delay: -6s;
+}
+
+.photo-card:nth-child(3) .slo-mo-media {
+  animation-delay: -12s;
+  -webkit-animation-delay: -12s;
+}
+
+@keyframes slo-mo-iphone {
+  0% { transform: scale(1) translate3d(0, 0, 0); }
+  100% { transform: scale(1.1) translate3d(-4.2%, -2.4%, 0); }
+}
+
+@-webkit-keyframes slo-mo-iphone {
+  0% { -webkit-transform: scale(1) translate3d(0, 0, 0); }
+  100% { -webkit-transform: scale(1.1) translate3d(-4.2%, -2.4%, 0); }
+}
+
+@keyframes slo-mo-card {
+  0% { transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { transform: scale(1.14) translate3d(-3%, -2%, 0); }
+}
+
+@-webkit-keyframes slo-mo-card {
+  0% { -webkit-transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { -webkit-transform: scale(1.14) translate3d(-3%, -2%, 0); }
+}
+
+@keyframes slo-mo-deck {
+  0% { transform: translate3d(0, 0, 0) rotateX(0deg); }
+  100% { transform: translate3d(0, -7px, 0) rotateX(1.6deg); }
+}
+
+@-webkit-keyframes slo-mo-deck {
+  0% { -webkit-transform: translate3d(0, 0, 0) rotateX(0deg); }
+  100% { -webkit-transform: translate3d(0, -7px, 0) rotateX(1.6deg); }
 }
 
 .hero-caption {
@@ -338,12 +434,6 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
-.photo-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
 .photo-card .pad {
   padding: 20px 22px 22px;
 }
@@ -351,7 +441,7 @@ textarea:focus-visible {
 .reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition: opacity 1.05s var(--ease), transform 1.05s var(--ease);
 }
 
 .reveal.in {
@@ -440,7 +530,7 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .hero-frame, .card-3d, .btn-3d, .nav-mobile {
+  .reveal, .hero-frame, .btn-3d, .nav-mobile {
     transition: none;
     transform: none;
     opacity: 1;

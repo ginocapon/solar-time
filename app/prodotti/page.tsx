@@ -14,7 +14,7 @@ export default function ProdottiPage() {
         Marca, modello e caratteristiche. I prezzi cliente escono da preventivo. Costo interno e
         margine non esistono in questo frontend.
       </p>
-      <div className="mt-10 grid gap-4 md:grid-cols-2">
+      <div className="deck mt-10 grid gap-4 md:grid-cols-2">
         {products.map((product) => (
           <article key={product.code} className="card-3d">
             <p className="text-xs text-amber">

@@ -85,14 +85,16 @@ export default function HomePage() {
           </div>
           <div className="hero-visual">
             <div className="hero-frame">
-              <Image
-                src="/images/hero-fotovoltaico-civile-industriale-terra.png"
-                alt="Paesaggio veneto con fotovoltaico civile sul tetto, copertura di un capannone e impianto a terra in campo"
-                width={1600}
-                height={900}
-                priority
-                className="h-auto w-full"
-              />
+              <div className="slo-mo">
+                <Image
+                  src="/images/hero-fotovoltaico-civile-industriale-terra.png"
+                  alt="Paesaggio veneto con fotovoltaico civile sul tetto, copertura di un capannone e impianto a terra in campo"
+                  width={1600}
+                  height={900}
+                  priority
+                  className="slo-mo-media h-auto w-full"
+                />
+              </div>
             </div>
             <p className="hero-caption">
               Tetto residenziale, copertura di capannone e campo fotovoltaico a terra.
@@ -112,10 +114,18 @@ export default function HomePage() {
             diversi: struttura, connessione alla rete e profilo dei consumi. Solar Time interviene su
             tutti e tre gli ambiti.
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="deck mt-8 grid gap-4 md:grid-cols-3">
             {lines.map((item) => (
               <Link key={item.href} href={item.href} className="card-3d photo-card block">
-                <Image src={item.image} alt={item.alt} width={1200} height={900} className="h-[180px] w-full object-cover" />
+                <div className="slo-mo">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    width={1200}
+                    height={900}
+                    className="slo-mo-media"
+                  />
+                </div>
                 <div className="pad">
                   <h3 className="font-display text-2xl text-navy">{item.title}</h3>
                   <p className="mt-2 text-sm text-muted">{item.text}</p>
@@ -135,7 +145,7 @@ export default function HomePage() {
             La progettazione parte da consumi, struttura disponibile e allaccio. Azienda DEMO: i valori
             numerici del sito sono illustrativi.
           </p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="deck mt-8 grid gap-4 md:grid-cols-3">
             {[
               ["Struttura e sito", "Si verifica prima cosa regge l'impianto e come si allaccia: falda, copertura piana o tavole a terra."],
               ["Profilo dei prelievi", "I consumi di una abitazione, di un laboratorio e di un campo in immissione non si dimensionano allo stesso modo."],
@@ -153,7 +163,7 @@ export default function HomePage() {
       <section id="soluzioni" className="mx-auto max-w-6xl px-4 py-16">
         <Reveal>
           <h2 className="font-display text-4xl text-navy">Soluzioni</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="deck mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((item) => (
               <Link key={item.href} href={item.href} className="card-3d block">
                 <h3 className="font-display text-2xl text-navy">{item.title}</h3>
@@ -193,7 +203,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <Reveal>
           <h2 className="font-display text-4xl text-navy">Progetti realizzati (DEMO)</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="deck mt-8 grid gap-4 md:grid-cols-2">
             {projects.map((project) => (
               <Link key={project.slug} href={`/progetti/${project.slug}`} className="card-3d block">
                 <p className="text-xs font-extrabold uppercase tracking-wider text-amber">{project.type}</p>
@@ -210,7 +220,7 @@ export default function HomePage() {
       <section className="bg-sand px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
           <h2 className="font-display text-4xl text-navy">Catalogo (estratto DEMO)</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-4">
+          <div className="deck mt-8 grid gap-4 md:grid-cols-4">
             {products.slice(0, 4).map((product) => (
               <div key={product.code} className="card-3d">
                 <p className="text-xs text-muted">{product.brand}</p>
@@ -230,7 +240,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="font-display text-4xl text-navy">Recensioni DEMO</h2>
         <p className="mt-2 text-sm text-muted">Non sono recensioni di clienti reali.</p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="deck mt-8 grid gap-4 md:grid-cols-3">
           {demoReviews.map((review) => (
             <blockquote key={review.name} className="card-3d">
               <p className="text-sm">{review.text}</p>
@@ -245,7 +255,7 @@ export default function HomePage() {
       <section className="bg-sand px-4 py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-display text-4xl text-navy">Domande frequenti</h2>
-          <div className="mt-8 grid gap-6">
+          <div className="deck mt-8 grid gap-6">
             {faqs.map((faq) => (
               <div key={faq.q} className="card-3d">
                 <h3 className="font-display text-2xl text-navy">{faq.q}</h3>
@@ -258,7 +268,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <h2 className="font-display text-4xl text-navy">Guide</h2>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="deck mt-8 grid gap-4 md:grid-cols-3">
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="card-3d block">
               <h3 className="font-display text-2xl text-navy">{post.title}</h3>

@@ -1,8 +1,10 @@
 import { posts } from "@/data/blog";
 import { projects } from "@/data/catalog";
-import { provinces } from "@/data/company";
+import { provinces, siteUrl } from "@/data/company";
 import { allContentSlugs } from "@/data/pages";
 import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
@@ -20,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   const unique = [...new Set(paths)];
   return unique.map((path) => ({
-    url: `https://solartime.it${path}`,
+    url: `${siteUrl}${path === "" ? "/" : path}`,
     lastModified: new Date("2026-09-17"),
   }));
 }

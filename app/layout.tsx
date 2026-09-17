@@ -21,7 +21,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://solartime.it"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://ginocapon.github.io/solar-time"),
   title: {
     default: "Solar Time | Fotovoltaico civile, industriale e a terra",
     template: "%s | Solar Time",

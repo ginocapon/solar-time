@@ -1,4 +1,4 @@
-import { company, isDemo } from "@/data/company";
+import { company, isDemo, siteUrl } from "@/data/company";
 
 export function JsonLd() {
   const data = {
@@ -8,7 +8,7 @@ export function JsonLd() {
         "@type": "Organization",
         name: company.name,
         legalName: company.legalName,
-        url: "https://solartime.it",
+        url: siteUrl,
         email: company.email,
         telephone: company.phone,
         address: {
@@ -25,7 +25,7 @@ export function JsonLd() {
       {
         "@type": "WebSite",
         name: company.name,
-        url: "https://solartime.it",
+        url: siteUrl,
       },
     ],
   };

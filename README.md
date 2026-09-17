@@ -2,6 +2,8 @@
 
 Piattaforma DEMO per impianti fotovoltaici: sito pubblico, catalogo, calcolatore, guide. Tutti i dati aziendali sono fittizi.
 
+**Sito pubblicato (HTTPS):** https://ginocapon.github.io/solar-time/
+
 **In questa fase non c'è Supabase e non c'è CRM.** I contenuti stanno nel repository GitHub (`data/`). I form non inviano email.
 
 ## Avvio locale
@@ -14,6 +16,7 @@ npm run dev
 
 Apri `http://localhost:3000`.
 
+Il sito è statico (`output: export`) e su ogni push su `main` GitHub Actions lo pubblica su GitHub Pages.
 ## Cosa c'è
 
 - Homepage con hero, calcolatore, soluzioni, progetti DEMO, FAQ

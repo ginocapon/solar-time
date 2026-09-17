@@ -12,7 +12,7 @@ export default function ProgettiPage() {
     <div className="mx-auto max-w-6xl px-4 py-14">
       <h1 className="text-4xl font-semibold text-navy">Progetti realizzati</h1>
       <p className="mt-3 text-muted">Esempi DEMO per SEO locale e collaudo schede. Non sono commesse reali.</p>
-      <div className="mt-8 grid gap-4 md:grid-cols-2">
+      <div className="deck mt-8 grid gap-4 md:grid-cols-2">
         {projects.map((project) => (
           <Link key={project.slug} href={`/progetti/${project.slug}`} className="card-3d block">
             <h2 className="text-xl font-semibold text-navy">{project.title}</h2>

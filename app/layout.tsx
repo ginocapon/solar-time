@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Outfit } from "next/font/google";
 import { AdvisorBot } from "@/components/AdvisorBot";
+import { BrandWatermark } from "@/components/BrandWatermark";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
@@ -33,8 +34,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it" className={`${fraunces.variable} ${outfit.variable}`}>
-      <body className="bg-cream pb-16 font-sans text-ink lg:pb-0">
-        <a href="#contenuto" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:bg-cream focus:px-3 focus:py-2">
+      <body className="sugar-paper bg-cream pb-16 font-sans text-ink lg:pb-0">
+        <BrandWatermark />
+        <a href="#contenuto" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-cream focus:px-3 focus:py-2">
           Salta al contenuto
         </a>
         <Header />

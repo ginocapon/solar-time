@@ -5,15 +5,15 @@
   --navy-2: #14304a;
   --ink: #12202e;
   --muted: #5c6b7a;
-  --paper: #f4f1ea;
-  --sand: #e8eef4;
-  --line: #d4dde6;
+  --paper: #eef4f7;
+  --sand: #dce8ef;
+  --line: #c9d7e2;
   --sun: #e39b24;
   --sun-2: #f2bc55;
   --ember: #c47a12;
   --ember-edge: #8a540c;
-  --white: #ffffff;
-  --cream: #f7f5f0;
+  --white: #f6fafc;
+  --cream: #e7eef3;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --slo: cubic-bezier(0.42, 0, 0.58, 1);
@@ -38,9 +38,77 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
+  background:
+    radial-gradient(1100px 520px at 8% -12%, rgba(174, 206, 222, 0.34), transparent 58%),
+    radial-gradient(900px 480px at 100% 0%, rgba(196, 218, 228, 0.22), transparent 50%),
+    var(--cream);
   color: var(--ink);
   font-family: var(--font-sans);
+}
+
+/* Carta da zucchero + grana, come il film grain di Grok ma più leggera. */
+.sugar-paper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  background:
+    linear-gradient(180deg, rgba(186, 214, 228, 0.16), rgba(231, 238, 243, 0) 38%),
+    radial-gradient(80% 60% at 50% 100%, rgba(168, 198, 214, 0.12), transparent 62%);
+}
+
+.sugar-paper::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 21;
+  opacity: 0.34;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 280px 280px;
+}
+
+.brand-watermark {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.brand-watermark-item {
+  position: absolute;
+  width: min(82vw, 760px);
+  color: #0b1f33;
+  opacity: 0.16;
+}
+
+.brand-watermark-a {
+  left: -20%;
+  top: 6%;
+}
+
+.brand-watermark-b {
+  right: -24%;
+  top: 38%;
+  width: min(70vw, 620px);
+  opacity: 0.13;
+  transform: rotate(-14deg);
+}
+
+.brand-watermark-c {
+  left: 4%;
+  bottom: -12%;
+  width: min(58vw, 520px);
+  opacity: 0.11;
+  transform: rotate(9deg);
+}
+
+main {
+  position: relative;
+  z-index: 2;
 }
 
 h1, h2, h3, .font-display {
@@ -211,6 +279,10 @@ textarea:focus-visible {
 
 .nav-link:hover::after,
 .nav-link:focus-visible::after { width: 100%; }
+
+.site-header {
+  background: color-mix(in srgb, var(--cream) 92%, white);
+}
 
 .nav-burger {
   display: none;
@@ -438,7 +510,10 @@ textarea:focus-visible {
 }
 
 .card-3d {
-  background: var(--white);
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(232, 241, 246, 0.35)),
+    var(--white);
   border: 1px solid rgba(11, 31, 51, 0.08);
   border-radius: var(--radius);
   padding: 24px;
@@ -446,6 +521,18 @@ textarea:focus-visible {
   box-shadow: 0 8px 24px rgba(11, 31, 51, 0.06);
   transform: translateZ(0);
   transition: transform 0.3s var(--bounce), box-shadow 0.3s ease;
+}
+
+.card-3d::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
 }
 
 .card-3d h3,
@@ -463,6 +550,10 @@ textarea:focus-visible {
 .photo-card {
   padding: 0;
   overflow: hidden;
+}
+
+.photo-card::after {
+  display: none;
 }
 
 .photo-card .pad {

@@ -104,7 +104,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-cream px-4 py-16">
+      <section className="px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
           <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-amber">Ambiti di intervento</p>
           <h2 className="font-display mt-2 max-w-3xl text-4xl text-navy">
@@ -139,7 +139,7 @@ export default function HomePage() {
 
       <Calculator />
 
-      <section className="bg-sand px-4 py-16">
+      <section className="bg-sand/40 px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
           <h2 className="font-display text-4xl text-navy">Perché Solar Time</h2>
           <p className="mt-3 max-w-2xl text-muted">
@@ -218,7 +218,7 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      <section className="bg-sand px-4 py-16">
+      <section className="bg-sand/40 px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
           <h2 className="font-display text-4xl text-navy">Catalogo (estratto DEMO)</h2>
           <div className="deck mt-8 grid gap-4 md:grid-cols-4">
@@ -253,7 +253,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-sand px-4 py-16">
+      <section className="bg-sand/40 px-4 py-16">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-display text-4xl text-navy">Domande frequenti</h2>
           <div className="deck mt-8 grid gap-6">

@@ -3,7 +3,7 @@ import { company, provinces } from "@/data/company";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-navy text-cream">
+    <footer className="relative z-[2] border-t border-line bg-navy text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:grid-cols-4">
         <div>
           <p className="font-display text-2xl tracking-[0.12em]">SOLAR TIME</p>

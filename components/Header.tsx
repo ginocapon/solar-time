@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BrandMark } from "@/components/BrandMark";
 import { company, mainNav } from "@/data/company";
 
 export function Header() {
@@ -15,12 +16,15 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-[rgba(247,245,240,0.96)]">
+    <header className="site-header sticky top-0 z-50 border-b border-line/80">
       <div className="mx-auto flex h-[74px] max-w-6xl items-center justify-between gap-4 px-4">
-        <Link href="/" className="flex flex-col justify-center leading-none">
-          <span className="font-display text-xl tracking-[0.12em] text-navy">SOLAR TIME</span>
-          <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
-            Civile · Industriale · A terra
+        <Link href="/" className="flex items-center gap-2.5">
+          <BrandMark accent className="h-10 w-10 shrink-0 text-navy" />
+          <span className="flex flex-col justify-center leading-none">
+            <span className="font-display text-xl tracking-[0.12em] text-navy">SOLAR TIME</span>
+            <span className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-muted">
+              Civile · Industriale · A terra
+            </span>
           </span>
         </Link>
         <nav className="nav-desktop hidden items-center gap-5 lg:flex" aria-label="Principale">

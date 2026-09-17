@@ -58,18 +58,18 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-shell">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-amber">
+            <p className="copy-safe text-xs font-extrabold uppercase tracking-[0.16em] text-amber sm:tracking-[0.22em]">
               Veneto · civile · industria · a terra
             </p>
-            <h1 className="font-display mt-4 max-w-xl text-4xl leading-[1.08] text-cream md:text-6xl">
+            <h1 className="font-display copy-safe mt-4 max-w-xl text-[2rem] leading-[1.08] text-cream sm:text-4xl md:text-6xl">
               Fotovoltaico civile,
               <br />
               industriale
               <br />
               e a terra.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/80">{company.subtitle}</p>
-            <div className="mt-8 flex flex-wrap items-start gap-3">
+            <p className="copy-safe mt-6 max-w-xl text-base leading-relaxed text-cream/80 sm:text-lg">{company.subtitle}</p>
+            <div className="mt-8 flex w-full min-w-0 flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-start">
               <div>
                 <CtaLink href="/calcola">{company.ctaCalc}</CtaLink>
                 <p className="mt-2 text-[11px] font-semibold uppercase tracking-wider text-cream/55">
@@ -107,10 +107,10 @@ export default function HomePage() {
       <section className="bg-cream px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
           <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-amber">Ambiti di intervento</p>
-          <h2 className="font-display mt-2 max-w-3xl text-4xl text-navy">
+          <h2 className="font-display copy-safe mt-2 max-w-3xl text-3xl text-navy sm:text-4xl">
             Residenziale, industria e impianti a terra
           </h2>
-          <p className="mt-3 max-w-2xl text-muted">
+          <p className="copy-safe mt-3 max-w-2xl text-muted">
             Un tetto civile, una copertura di capannone e un campo a terra si progettano con criteri
             diversi: struttura, connessione alla rete e profilo dei consumi. Solar Time interviene su
             tutti e tre gli ambiti.
@@ -141,8 +141,8 @@ export default function HomePage() {
 
       <section className="bg-sand px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
-          <h2 className="font-display text-4xl text-navy">Perché Solar Time</h2>
-          <p className="mt-3 max-w-2xl text-muted">
+          <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Perché Solar Time</h2>
+          <p className="copy-safe mt-3 max-w-2xl text-muted">
             La progettazione parte da consumi, struttura disponibile e allaccio. Azienda DEMO: i valori
             numerici del sito sono illustrativi.
           </p>
@@ -163,7 +163,7 @@ export default function HomePage() {
 
       <section id="soluzioni" className="mx-auto max-w-6xl px-4 py-16">
         <Reveal>
-          <h2 className="font-display text-4xl text-navy">Soluzioni</h2>
+          <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Soluzioni</h2>
           <div className="deck mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {solutions.map((item) => (
               <Link key={item.href} href={item.href} className="card-3d block">
@@ -203,7 +203,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16">
         <Reveal>
-          <h2 className="font-display text-4xl text-navy">Progetti realizzati (DEMO)</h2>
+          <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Progetti realizzati (DEMO)</h2>
           <div className="deck mt-8 grid gap-4 md:grid-cols-2">
             {projects.map((project) => (
               <Link key={project.slug} href={`/progetti/${project.slug}`} className="card-3d block">
@@ -220,7 +220,7 @@ export default function HomePage() {
 
       <section className="bg-sand px-4 py-16">
         <Reveal className="mx-auto max-w-6xl">
-          <h2 className="font-display text-4xl text-navy">Catalogo (estratto DEMO)</h2>
+          <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Catalogo (estratto DEMO)</h2>
           <div className="deck mt-8 grid gap-4 md:grid-cols-4">
             {products.slice(0, 4).map((product) => (
               <div key={product.code} className="card-3d">
@@ -239,7 +239,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="font-display text-4xl text-navy">Recensioni DEMO</h2>
+        <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Recensioni DEMO</h2>
         <p className="mt-2 text-sm text-muted">Non sono recensioni di clienti reali.</p>
         <div className="deck mt-8 grid gap-4 md:grid-cols-3">
           {demoReviews.map((review) => (
@@ -255,7 +255,7 @@ export default function HomePage() {
 
       <section className="bg-sand px-4 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-4xl text-navy">Domande frequenti</h2>
+          <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Domande frequenti</h2>
           <div className="deck mt-8 grid gap-6">
             {faqs.map((faq) => (
               <div key={faq.q} className="card-3d">
@@ -268,7 +268,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="font-display text-4xl text-navy">Guide</h2>
+        <h2 className="font-display copy-safe text-3xl text-navy sm:text-4xl">Guide</h2>
           <div className="deck mt-8 grid gap-4 md:grid-cols-3">
             {posts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="card-3d block">
@@ -281,12 +281,12 @@ export default function HomePage() {
       </section>
 
       <section className="bg-navy px-4 py-16 text-center text-cream">
-        <h2 className="font-display text-4xl">Richiesta di valutazione</h2>
-        <p className="mx-auto mt-3 max-w-xl text-cream/75">
+        <h2 className="font-display copy-safe text-3xl sm:text-4xl">Richiesta di valutazione</h2>
+        <p className="copy-safe mx-auto mt-3 max-w-xl text-cream/75">
           Il calcolo online fornisce un ordine di grandezza. Il dimensionamento definitivo richiede
           sopralluogo. L&apos;assistente, dopo cinque risposte, propone il contatto.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <div className="mt-6 flex w-full min-w-0 flex-col items-stretch gap-3 px-2 sm:flex-row sm:flex-wrap sm:justify-center sm:px-0">
           <CtaLink href="/calcola">{company.ctaCalc}</CtaLink>
           <CtaLink href="/contatti" variant="secondary">
             Richiedi un sopralluogo

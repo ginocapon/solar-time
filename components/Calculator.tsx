@@ -71,14 +71,14 @@ export function Calculator() {
       <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-amber">
         Calcolo impianto · indicativo
       </p>
-      <h2 className="font-display mt-2 max-w-2xl text-4xl text-navy">
+      <h2 className="font-display copy-safe mt-2 max-w-2xl text-3xl text-navy sm:text-4xl">
         Un ordine di grandezza, non il progetto
       </h2>
-      <p className="mt-3 max-w-2xl text-muted">
+      <p className="copy-safe mt-3 max-w-2xl text-muted">
         Ombre, struttura, rete, consumi reali: le variabili sono troppe per un numero chiuso dal sito.
         Qui ottieni una fascia. Il valore è orientarti e poi parlare con un tecnico.
       </p>
-      <div className="seg-3d mt-6 flex flex-wrap">
+      <div className="seg-3d mt-6 flex w-full min-w-0 flex-wrap">
         {(
           [
             ["civile", "Civile"],
@@ -253,7 +253,7 @@ export function Calculator() {
         </div>
         <div className="card-3d bg-sand">
           <p className="text-xs font-semibold tracking-[0.14em] text-navy">RISULTATO — INDICATIVO</p>
-          <dl className="mt-4 grid grid-cols-2 gap-4 text-sm">
+          <dl className="mt-4 grid min-w-0 grid-cols-1 gap-4 text-sm sm:grid-cols-2">
             <div>
               <dt className="text-muted">Potenza indicativa</dt>
               <dd className="text-2xl font-semibold text-navy">{result.kwp} kWp</dd>

@@ -76,11 +76,11 @@ export function AdvisorBot() {
               width={48}
               height={48}
               className="h-12 w-12 rounded-full object-cover ring-2 ring-amber"
-              style={{ objectPosition: "50% 18%" }}
+              style={{ objectPosition: "50% 28%" }}
             />
             <div className="min-w-0 flex-1">
-              <p className="font-display text-lg leading-tight">Luca · installatore</p>
-              <p className="text-[11px] uppercase tracking-wider text-cream/70">
+              <p className="font-display copy-safe text-lg leading-tight">Luca · installatore</p>
+              <p className="copy-safe text-[11px] uppercase tracking-wider text-cream/70">
                 Ordine di grandezza · poi il sopralluogo
               </p>
             </div>
@@ -101,14 +101,14 @@ export function AdvisorBot() {
                     width={28}
                     height={28}
                     className="mb-0.5 h-7 w-7 shrink-0 rounded-full object-cover"
-                    style={{ objectPosition: "50% 18%" }}
+                    style={{ objectPosition: "50% 28%" }}
                   />
                 ) : null}
                 <p
                   className={
                     line.from === "bot"
-                      ? "max-w-[88%] rounded-2xl bg-sand px-3 py-2 text-ink"
-                      : "ml-auto max-w-[92%] rounded-2xl bg-[linear-gradient(180deg,#ffd27a,#e39b24)] px-3 py-2 font-semibold text-ink"
+                      ? "copy-safe min-w-0 max-w-[calc(100%-2.25rem)] rounded-2xl bg-sand px-3 py-2 text-ink"
+                      : "copy-safe ml-auto min-w-0 max-w-[92%] rounded-2xl bg-[linear-gradient(180deg,#ffd27a,#e39b24)] px-3 py-2 font-semibold text-ink"
                   }
                 >
                   {line.text}
@@ -116,7 +116,7 @@ export function AdvisorBot() {
               </div>
             ))}
             {showContact ? (
-              <div className="rounded-2xl border border-line bg-white p-3">
+              <div className="copy-safe rounded-2xl border border-line bg-white p-3">
                 <p className="font-display text-base text-ink">Richiesta di contatto</p>
                 <p className="mt-1 text-xs text-muted">
                   Il calcolo sul sito è indicativo. Il dimensionamento sul sito reale lo fa un tecnico.
@@ -139,13 +139,13 @@ export function AdvisorBot() {
             ) : null}
           </div>
           {question ? (
-            <div className="grid gap-2 border-t border-line bg-paper p-3">
-              <p className="font-display text-sm text-ink">{question.q}</p>
+            <div className="grid min-w-0 gap-2 border-t border-line bg-paper p-3">
+              <p className="font-display copy-safe text-sm text-ink">{question.q}</p>
               {question.answers.map((item) => (
                 <button
                   key={item.label}
                   type="button"
-                  className="rounded-xl border border-line bg-white px-3 py-2 text-left text-sm font-semibold text-ink shadow-[0_3px_0_#c5d0dc] active:translate-y-px"
+                  className="copy-safe w-full rounded-xl border border-line bg-white px-3 py-2 text-left text-sm font-semibold text-ink shadow-[0_3px_0_#c5d0dc] active:translate-y-px"
                   onClick={() => answer(item.label)}
                 >
                   {item.label}

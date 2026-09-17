@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="it" className={`${fraunces.variable} ${outfit.variable}`}>
-      <body className="bg-cream pb-16 font-sans text-ink lg:pb-0">
+      <body className="overflow-x-clip bg-cream pb-16 font-sans text-ink lg:pb-0">
         <a href="#contenuto" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:bg-cream focus:px-3 focus:py-2">
           Salta al contenuto
         </a>

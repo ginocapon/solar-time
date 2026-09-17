@@ -1,0 +1,17 @@
+# Solar Time
+
+> Azienda DEMO. Dati fittizi, sostituibili. Nessun CRM attivo in questa fase.
+
+Solar Time progetta e realizza impianti fotovoltaici, accumulo e gestione dell'energia in Veneto (Padova, Vicenza, Verona, Treviso, Belluno, Venezia, Rovigo).
+
+Posizionamento: LA TUA ENERGIA. IL TUO RISPARMIO. LA TUA INDIPENDENZA.
+
+Sito: sito pubblico + catalogo + calcolatore (stima preliminare). CRM e Supabase non sono attivi: i contenuti stanno nel repository GitHub.
+
+- /calcola
+- /fotovoltaico
+- /fotovoltaico-residenziale
+- /fotovoltaico-aziende
+- /prodotti
+- /progetti
+- /blog
